@@ -1,0 +1,42 @@
+# ---- COCOA tree: track only what is needed to reproduce our results ----
+# (projects/roman_y1, projects/des_y3, external_modules/code/cosmolike_core)
+cocoa/*
+!cocoa/Cocoa
+cocoa/Cocoa/*
+!cocoa/Cocoa/projects
+!cocoa/Cocoa/external_modules
+cocoa/Cocoa/external_modules/*
+!cocoa/Cocoa/external_modules/code
+cocoa/Cocoa/external_modules/code/*
+!cocoa/Cocoa/external_modules/code/cosmolike_core
+cocoa/Cocoa/projects/*
+!cocoa/Cocoa/projects/roman_y1
+!cocoa/Cocoa/projects/des_y3
+!cocoa/Cocoa/projects/README.md
+!cocoa/Cocoa/projects/copy_and_rename_project.sh
+
+# ---- Inside tracked projects: exclude bulky outputs, keep configs/scripts/masks/n(z) ----
+cocoa/Cocoa/projects/*/chains/
+cocoa/Cocoa/projects/*/emulators/
+cocoa/Cocoa/projects/*/data/*cov*
+cocoa/Cocoa/projects/*/data/*.cov
+cocoa/Cocoa/projects/*/data/COV*
+cocoa/Cocoa/projects/*/data/*datavector*
+cocoa/Cocoa/projects/*/data/*.h5
+cocoa/Cocoa/projects/*/EXAMPLE_EVALUATE*.ipynb
+
+# ---- Plots: keep scripts and figures, not chain copies ----
+plots/**/chains/
+
+# ---- Python / notebook noise ----
+__pycache__/
+*.pyc
+*.o
+*.so
+.ipynb_checkpoints/
+
+# ---- Misc ----
+*.log
+*.out
+*.err
+.DS_Store

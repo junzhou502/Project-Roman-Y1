@@ -1,0 +1,11 @@
+data_file = roman_lsst_41.modelvector
+cov_file = cov_roman_y1_lsst_50
+mask_file = roman_y1_SRDlike.mask
+nz_lens_file = lsst_y1_lens_4cosmolike.nz 
+nz_source_file = lsst_y1_srcs_4cosmolike.nz
+lens_ntomo = 5
+source_ntomo = 5
+n_theta = 20
+theta_min_arcmin = 2.5
+theta_max_arcmin = 250.
+all_sims_hdf5_file = baryons_logPkR.h5
