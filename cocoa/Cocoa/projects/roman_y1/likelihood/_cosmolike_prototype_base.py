@@ -47,7 +47,9 @@ class _cosmolike_prototype_base(DataSetLikelihood):
                                        np.linspace(3.01,50.1,max(30,int(0.25*tmp)))),axis=0)
     self.len_z_interp_2D = len(self.z_interp_2D)
     
-    self.log10k_interp_2D = np.linspace(-4.99,2.0,int(1250+250*self.accuracyboost))
+    # lower bound -4.90 (not -4.99): CAMB's transfer-grid kmin = 0.1/tau0/AccuracyBoost
+    # rises above 10^-4.99 = 1.02e-05/Mpc for young-universe corners (high H0 x high omegam)
+    self.log10k_interp_2D = np.linspace(-4.90,2.0,int(1250+250*self.accuracyboost))
     self.len_log10k_interp_2D = len(self.log10k_interp_2D)
     # ------------------------------------------------------------------------
     
@@ -201,8 +203,9 @@ class _cosmolike_prototype_base(DataSetLikelihood):
   def set_cosmo_related(self):
     h = self.provider.get_param("H0")/100.0
     if not self.use_emulator:
-      PKL  = self.provider.get_Pk_interpolator(("delta_tot", "delta_tot"), 
-                                               nonlinear=False, 
+      PKL  = self.provider.get_Pk_interpolator(("delta_tot", "delta_tot"),
+                                               nonlinear=False,
+                                               extrap_kmin=1e-6,
                                                extrap_kmax=2.5e2*self.accuracyboost)
       lnPL = PKL.logP(self.z_interp_2D,
                       np.power(10.0,self.log10k_interp_2D)).flatten(order='F')+np.log(h**3)
@@ -235,7 +238,8 @@ class _cosmolike_prototype_base(DataSetLikelihood):
                             order='F') + lnbt).ravel(order='F')
       elif self.non_linear_emul == 2:
         lnPNL = self.provider.get_Pk_interpolator(("delta_tot", "delta_tot"),
-          nonlinear=True, extrap_kmax =2.5e2*self.accuracyboost).logP(self.z_interp_2D,
+          nonlinear=True, extrap_kmin=1e-6,
+          extrap_kmax =2.5e2*self.accuracyboost).logP(self.z_interp_2D,
           np.power(10.0,self.log10k_interp_2D)).flatten(order='F')+np.log(h**3)   
       else:
         raise LoggedError(self.log, "non_linear_emul = %d is an invalid option", non_linear_emul)

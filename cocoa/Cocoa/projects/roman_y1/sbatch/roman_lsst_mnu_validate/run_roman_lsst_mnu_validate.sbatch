@@ -26,3 +26,5 @@ cobaya-run ./projects/roman_y1/roman_lsst_41_mnu_validate.yaml -f
 cobaya-run ./projects/roman_y1/roman_lsst_60_mnu_validate.yaml -f
 cobaya-run ./projects/des_y3/des_y1_mnu_validate.yaml -f
 cobaya-run ./projects/des_y3/des_y3_mnu_validate.yaml -f
+cobaya-run ./projects/roman_y1/roman_lsst_41_mnu_stress.yaml -f
+cobaya-run ./projects/des_y3/des_y3_mnu_stress.yaml -f
