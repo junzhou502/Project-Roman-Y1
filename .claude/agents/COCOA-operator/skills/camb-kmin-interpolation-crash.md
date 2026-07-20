@@ -31,6 +31,11 @@ The "minimum k possible" value varies between crashes — that is the fingerprin
    covers the residual corner where CAMB kmin (~1.36e-05 at H0=91, omegam=0.9) still
    exceeds 10^-4.90.
 
+## No-extrapolation alternative (verified 2026-07-20)
+A variant with NO extrap_kmin and floor -4.85 (10^-4.85 = 1.4125e-05 > worst-case
+CAMB kmin 1.3922e-05 at H0=91, omegam=0.9) also passes fiducial + corner validation;
+see clone-cocoa-likelihood-variant.md for the measurement recipe and clone wiring.
+
 ## Validation pattern
 Rerun fiducial evaluates (chi2 impact of the grid change was negligible: roman ~1e-9
 absolute; des_y3 777.42 -> 776.87, 0.07%) AND a corner stress evaluate

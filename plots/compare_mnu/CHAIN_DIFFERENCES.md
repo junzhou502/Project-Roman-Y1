@@ -75,7 +75,34 @@ Important caveat when comparing to PUBLISHED DES chains:
   changes by <0.1% (des_y3: 777.42 -> 776.87).
 - "kmin-test" (des_*_mnu_kmin chains, separate copied prototype
   `_cosmolike_prototype_base_kmin.py` + `cosmic_shear_kmin` likelihood):
-  NO extrap_kmin; lower bound -4.85, chosen to clear the worst-case CAMB
-  kmin over the whole prior volume. Purpose: isolate whether
-  extrap_kmin/k-grid choices influence the DES posteriors at all.
-  (Details to be filled in when the runs finish.)
+  NO extrap_kmin; lower bound -4.85. Verified with the project CAMB build:
+  worst-case grid kmin over the prior volume is 1.3922e-05/Mpc (H0=91,
+  omegam=0.9, tau0=6841 Mpc), and 10^-4.85 = 1.4125e-05 clears it by 1.5%
+  (whereas the production floor 10^-4.90 = 1.259e-05 does not — which is
+  why the production fix needs extrap_kmin). Fiducial chi2: Y1 238.651
+  (identical to 4e-5), Y3 777.054 (+0.023% pure grid-resolution shift).
+  Submitted 2026-07-20 as kicp jobs 52419069 (Y1) / 52419070 (Y3).
+  If their posteriors match des_*_mnu_mcmc, the k-grid/extrapolation
+  choices are exonerated as a cause of the extra width.
+
+## Datavector / covariance audit (2026-07-20)
+
+The cosmic-shear part of the 3x2pt products we use was audited against the
+published shear-only analyses:
+- Both Y1 and Y3 datavectors are 900 points (xi+ 0-199, xi- 200-399,
+  gamma_t 400-799, w 800-899).
+- Masked shear counts: Y1 = 167 xi+ + 60 xi- = 227 points, and every
+  per-bin-pair first-kept angular bin matches the Troxel et al. theta_min
+  table exactly. Y3 = 166 xi+ + 61 xi- = 227 points, matching the Y3
+  cosmic-shear fiducial selection (not the 273-point LCDM-optimized one).
+- Covariance handling is mathematically equivalent to inverting the kept
+  227x227 shear-shear block; no point-mass marginalization applies to
+  probe "xi"; masked sub-covariances are positive definite; total shear
+  S/N = 24.1 (Y1) / 32.1 (Y3), in the expected ballpark.
+- Fixed-mnu and free-mnu chains use byte-identical likelihood/data blocks.
+
+Conclusion: data selection and covariance are equivalent to the published
+shear-only analyses; the residual width difference vs published chains is
+NOT a datavector/mask/prior issue. Leading remaining explanations: the
+published Y3 chain includes the shear-ratio likelihood (ours does not),
+and sampler/convention differences; the k-grid hypothesis is under test.

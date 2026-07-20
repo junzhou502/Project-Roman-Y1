@@ -21,6 +21,21 @@ stress evaluate (H0=90, om=0.85, mnu=0.5) finite. NOTE: fixed-mnu chains ran wit
 mnu chains run with -4.90 — a 0.07%-level chi2 difference, flag if doing precise
 fixed-vs-free comparisons.
 
+2026-07-20 kmin-effect test (DES chains look wider than published; testing whether the
+extrap_kmin=1e-6 + (-4.90) grid change matters): new variant likelihood
+`des_y3.cosmic_shear_kmin` (files cosmic_shear_kmin.py/.yaml,
+_cosmolike_prototype_base_kmin.py in projects/des_y3/likelihood/) with NO extrap_kmin
+and log10k floor -4.85 (worst-case CAMB kmin 1.3922e-05 at H0=91,om=0.9; floor
+1.4125e-05, margin 1.46%). Validation (caslake 52418671): y1 chi2 238.65106
+(ref 238.65102), y3 777.05394 (ref 776.87425, 0.023% grid shift), stress finite,
+empty .err. Chains on kicp: 52419069 (des_y1_mnu_kmin_mcmc), 52419070
+(des_y3_mnu_kmin_mcmc), outputs chains/des_y{1,3}_mnu_kmin_mcmc/. Compare against
+des_y{1,3}_mnu_mcmc when converged: if posteriors agree, extrap_kmin is exonerated.
+Also verified 2026-07-20: the .dataset shear datavector/cov/mask are exactly the
+published DES shear-only setups (227 points each for Y1 and Y3; Y1 mask matches
+Troxel+ per-pair theta_min exactly; cov = straight shear-shear sub-block, masked
+then inverted; no PM marginalization for probe "xi").
+
 Status of earlier fixed-mnu template chains (context for comparisons):
 - roman_lsst_50_mcmc converged (R-1 = 0.047).
 - roman_lsst_41_mcmc did NOT converge (R-1 ~ 0.158); job 52105459 died with a cobaya/CAMB
