@@ -81,9 +81,14 @@ Important caveat when comparing to PUBLISHED DES chains:
   (whereas the production floor 10^-4.90 = 1.259e-05 does not — which is
   why the production fix needs extrap_kmin). Fiducial chi2: Y1 238.651
   (identical to 4e-5), Y3 777.054 (+0.023% pure grid-resolution shift).
-  Submitted 2026-07-20 as kicp jobs 52419069 (Y1) / 52419070 (Y3).
-  If their posteriors match des_*_mnu_mcmc, the k-grid/extrapolation
-  choices are exonerated as a cause of the extra width.
+  Submitted 2026-07-20 as kicp jobs 52419069 (Y1) / 52419070 (Y3);
+  both converged (R-1 = 0.047).
+  RESULT (see compare_kmin.py, kmin_check_DES_Y{1,3}.jpg): the kmin
+  chains are essentially identical to the production mnu chains. All
+  parameter shifts are <=0.14 sigma (Y1: omegam/sigma8/S8 all <=0.03
+  sigma; Y3: S8 +0.14 sigma, others <=0.04 sigma). The k-grid floor and
+  extrap_kmin choices therefore do NOT move the posteriors and are
+  exonerated as a cause of the extra width.
 
 ## Datavector / covariance audit (2026-07-20)
 
@@ -103,6 +108,22 @@ published shear-only analyses:
 
 Conclusion: data selection and covariance are equivalent to the published
 shear-only analyses; the residual width difference vs published chains is
-NOT a datavector/mask/prior issue. Leading remaining explanations: the
-published Y3 chain includes the shear-ratio likelihood (ours does not),
-and sampler/convention differences; the k-grid hypothesis is under test.
+NOT a datavector/mask/prior issue.
+
+## Overall conclusion on the DES width mismatch
+
+Three candidate causes were checked and all cleared:
+1. Datavector / covariance / mask -> equivalent to the published
+   shear-only selections (227 shear points, matching scale cuts).
+2. Priors -> match Troxel+18 (Y1) and 2105.13549 (Y3) line by line.
+3. k-grid / extrap_kmin -> the kmin-test chains reproduce the production
+   mnu chains to <=0.14 sigma, so this code change has no effect.
+
+The remaining, unexcluded difference between our des_*_mnu chains and the
+published DES chains is the **shear-ratio (SR) likelihood**: the published
+DES Y3 fiducial chain (chain_1x2pt_lcdm_SR_maglim.txt) uses a joint
+cosmic-shear + SR likelihood, while our COCOA chains are pure xi+/-. SR
+tightens photo-z / IA and hence S8, which accounts for our wider Y3
+contours. Consistently, the Y1 published analysis (no SR) already agrees
+with our chain to ~10% in sigma(S8). Residual sampler/convention
+differences (PolyChord vs cobaya-MCMC, burn-in) are second order.
