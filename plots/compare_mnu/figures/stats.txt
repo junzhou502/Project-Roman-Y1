@@ -1,0 +1,63 @@
+BURN-IN SENSITIVITY
+
+y3_mnu
+  ignore_rows=0.2: omegam=0.3032 +0.0450 -0.0632 | S8=0.7648 +0.0371 -0.0255 | N=375324
+  ignore_rows=0.3: omegam=0.3031 +0.0458 -0.0637 | S8=0.7642 +0.0376 -0.0254 | N=328408
+  ignore_rows=0.5: omegam=0.3038 +0.0448 -0.0653 | S8=0.7648 +0.0375 -0.0262 | N=234577
+
+y3_kmin
+  ignore_rows=0.2: omegam=0.3054 +0.0488 -0.0667 | S8=0.7693 +0.0321 -0.0262 | N=308613
+  ignore_rows=0.3: omegam=0.3050 +0.0494 -0.0658 | S8=0.7696 +0.0318 -0.0267 | N=270035
+  ignore_rows=0.5: omegam=0.3039 +0.0493 -0.0628 | S8=0.7700 +0.0316 -0.0264 | N=192882
+
+roman41_mnu
+  ignore_rows=0.2: omegam=0.3205 +0.0509 -0.1049 | S8=0.8101 +0.0449 -0.0381 | N=140117
+  ignore_rows=0.3: omegam=0.3249 +0.0539 -0.1086 | S8=0.8100 +0.0452 -0.0379 | N=122601
+  ignore_rows=0.5: omegam=0.3211 +0.0537 -0.1028 | S8=0.8106 +0.0461 -0.0376 | N=87574
+
+ROMAN_41 fix $m_\nu$ omegam = 0.298 + 0.047 - 0.088
+ROMAN_41 fix $m_\nu$ S8 = 0.814 + 0.046 - 0.039
+ROMAN_41 free $m_\nu$ omegam = 0.320 + 0.051 - 0.105
+ROMAN_41 free $m_\nu$ S8 = 0.810 + 0.045 - 0.038
+ROMAN_41 free $m_\nu$ mnu = 0.328 + 0.272 - 0.272
+ROMAN_60 fix $m_\nu$ omegam = 0.297 + 0.043 - 0.084
+ROMAN_60 fix $m_\nu$ S8 = 0.820 + 0.034 - 0.030
+ROMAN_60 free $m_\nu$ omegam = 0.304 + 0.049 - 0.078
+ROMAN_60 free $m_\nu$ S8 = 0.817 + 0.032 - 0.031
+ROMAN_60 free $m_\nu$ mnu = 0.310 + 0.290 - 0.254
+
+DES_Y1 fix $m_\nu$ omegam = 0.272 + 0.042 - 0.064
+DES_Y1 fix $m_\nu$ S8 = 0.789 + 0.029 - 0.028
+DES_Y1 free $m_\nu$ omegam = 0.302 + 0.048 - 0.078
+DES_Y1 free $m_\nu$ S8 = 0.773 + 0.033 - 0.026
+DES_Y1 free $m_\nu$ mnu = 0.454 + 0.136 - 0.398
+DES_Y3 fix $m_\nu$ omegam = 0.280 + 0.042 - 0.052
+DES_Y3 fix $m_\nu$ S8 = 0.777 + 0.032 - 0.026
+DES_Y3 free $m_\nu$ omegam = 0.303 + 0.045 - 0.063
+DES_Y3 free $m_\nu$ S8 = 0.765 + 0.037 - 0.025
+DES_Y3 free $m_\nu$ mnu = 0.330 + 0.270 - 0.274
+
+DES_Y1_COCOA free $m_\nu$ omegam = 0.302 + 0.048 - 0.078
+DES_Y1_COCOA free $m_\nu$ S8 = 0.773 + 0.033 - 0.026
+DES_Y1 published omegam = 0.290 + 0.040 - 0.064
+DES_Y1 published S8 = 0.778 + 0.030 - 0.023
+
+DES_Y3_COCOA free $m_\nu$ omegam = 0.303 + 0.045 - 0.063
+DES_Y3_COCOA free $m_\nu$ S8 = 0.765 + 0.037 - 0.025
+DES_Y3 published (incl. SR) omegam = 0.290 + 0.041 - 0.060
+DES_Y3 published (incl. SR) S8 = 0.759 + 0.023 - 0.023
+
+DES_Y1 no extrap_kmin omegam = 0.304 + 0.047 - 0.080
+DES_Y1 no extrap_kmin S8 = 0.773 + 0.035 - 0.024
+DES_Y1 extrap_kmin omegam = 0.302 + 0.048 - 0.078
+DES_Y1 extrap_kmin S8 = 0.773 + 0.033 - 0.026
+DES_Y1 published omegam = 0.290 + 0.040 - 0.064
+DES_Y1 published S8 = 0.778 + 0.030 - 0.023
+
+DES_Y3 no extrap_kmin omegam = 0.305 + 0.049 - 0.067
+DES_Y3 no extrap_kmin S8 = 0.769 + 0.032 - 0.026
+DES_Y3 extrap_kmin omegam = 0.303 + 0.045 - 0.063
+DES_Y3 extrap_kmin S8 = 0.765 + 0.037 - 0.025
+DES_Y3 published (incl. SR) omegam = 0.290 + 0.041 - 0.060
+DES_Y3 published (incl. SR) S8 = 0.759 + 0.023 - 0.023
+

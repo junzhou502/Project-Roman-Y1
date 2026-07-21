@@ -41,3 +41,6 @@ __pycache__/
 *.out
 *.err
 .DS_Store
+
+# make_figures logs
+plots/**/make_figures.log
